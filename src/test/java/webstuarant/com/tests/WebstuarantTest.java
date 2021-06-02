@@ -36,22 +36,25 @@ public class WebstuarantTest {
 
 
     @Test
-    public void testSteps() {
+    public void testSteps() throws InterruptedException {
         //searching the requested item
         homePage.searchTextBox.sendKeys("stainless work table", Keys.ENTER);
 
 
         // asserting the title contains table
         searchPage.assertingTable();
-
+        Thread.sleep(500);
         //hovering over to last item
         searchPage.scrollingDown();
-
+        searchPage.lastButton.click();
+        searchPage.nextPage();
+        Thread.sleep(500);
         //clicking the last item on the current page
         searchPage.clickTheLastElement();
 
         //viewing the cart
         cartPage.viewCart.click();
+
 
         //emptying the cart
         checkoutPage.emptyCartButton.click();
@@ -71,7 +74,7 @@ public class WebstuarantTest {
     @After
     public void tearDown() {
         //closing the driver
-        Driver.closeDriver();
+        // Driver.closeDriver();
 
     }
 
