@@ -17,8 +17,8 @@ public class ResultPage extends BasePage {
 
     @FindBy(xpath = " //li[@class='rc-pagination-next rc-pagination-disabled']/button[@type='button']")
     public WebElement nextPageButton;
-
     //li[@class='rc-pagination-next rc-pagination-disabled']/button[@type='button']
+
     @FindBy(xpath = "//div[@id='product_listing']//a[contains(@class, \"description\")]")
     public List<WebElement> productItem;
 
@@ -46,30 +46,26 @@ public class ResultPage extends BasePage {
     public WebElement lastButton;
 
 
-    public void allTextOfItems(){
-        List<String> textOfItemss=new ArrayList<>();
+    public void allTextOfItems() {
+        List<String> textOfItems = new ArrayList<>();
 
-        for (int i = 0; i <=productItem.size()-1 ; i++) {
-            textOfItemss.add(productItem.get(i).getText());
-            System.out.println(textOfItemss);
+        for (int i = 0; i <= productItem.size() - 1; i++) {
+            textOfItems.add(productItem.get(i).getText());
+            if (!textOfItems.get(i).contains("Table")){
+                System.err.println(textOfItems.get(i));
+            }
         }
 
     }
 
-    public void nextPage(){
-        List<String>allItems=new ArrayList<>();
-        for (int i = 0; i <8 ; i++) {
-scrollingDown();
-            try {
-                lastButton.click();
-            } catch (Exception e) {
-               e.getMessage();
-            }
+    public void nextPage() {
+        for (int i = 0; i < 7; i++) {
+            scrollingDown();
+            lastButton.click();
             allTextOfItems();
-
-
-
         }
+        scrollingDown();
+
 
 
     }
