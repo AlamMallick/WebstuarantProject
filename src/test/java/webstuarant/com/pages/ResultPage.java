@@ -58,7 +58,7 @@ public class ResultPage extends BasePage {
 
     public void nextPage(){
         List<String>allItems=new ArrayList<>();
-        for (int i = 0; i <9 ; i++) {
+        for (int i = 0; i <8 ; i++) {
 scrollingDown();
             try {
                 lastButton.click();
